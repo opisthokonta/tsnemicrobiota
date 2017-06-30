@@ -17,9 +17,6 @@ From inside R, the package can be installed from GitHub by using devtools.
 
 library("devtools")
 install_github("opisthokonta/tsnemicrobiota")
-#> Downloading GitHub repo opisthokonta/tsnemicrobiota@master
-#> from URL https://api.github.com/repos/opisthokonta/tsnemicrobiota/zipball/master
-#> Installation failed: Not Found (404)
 ```
 
 Example

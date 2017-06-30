@@ -1,0 +1,17 @@
+Package: tsnemicrobiota
+Type: Package
+Title: t-distributed stochastic neighbor embedding for microbiota data
+Version: 0.1.0
+Author: Jonas Christoffer Lindstrom
+Maintainer: Jonas Christoffer Lindstrom <jonaslindstrom88@gmail.com>
+Description: Use the t-SNE visualization technique on microbiota data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    ape (>= 4.1),
+    ggplot2 (>= 2.2.1),
+	philr (>= 1.2.0),
+    phyloseq (>= 1.20.0),
+    knitr
+RoxygenNote: 6.0.1

@@ -5,6 +5,8 @@ Version: 0.1.0
 Author: Jonas Christoffer Lindstrom
 Maintainer: Jonas Christoffer Lindstrom <jonaslindstrom88@gmail.com>
 Description: Use the t-SNE visualization technique on microbiota data.
+URL: https://github.com/opisthokonta/tsnemicrobiota
+BugReports: https://github.com/opisthokonta/tsnemicrobiota/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

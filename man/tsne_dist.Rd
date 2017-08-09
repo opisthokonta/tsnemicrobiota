@@ -56,8 +56,8 @@ The control argument is a list that can supply any of the following components:
 \code{step_size}: \tab The gradient descent step size. Default is 100, but it can sometimes be usefull to set this to a lower value.\cr
 \code{momentum_values}: \tab A vector of values that determines the momentum. The default is c(0.5, 0.8), following the original t-SNE paper.\cr
 \code{momentum_iter}: \tab A vector of values that determines the iterations the momentum_values should be used. Default is c(250, 1000), following the original t-SNE paper. \cr
-\code{early_exageration_iter}: \tab Numerical. The number of iterations the early exageration trick should be used. Default 50.
-\code{early_exageration_factor}: \tab Numerical. The exageration factor used in the early exacegration phase. Default is 4.
+\code{early_exageration_iter}: \tab Numerical. The number of iterations the early exageration trick should be used. Default 50. \cr
+\code{early_exageration_factor}: \tab Numerical. The exageration factor used in the early exacegration phase. Default is 4. \cr
 }
 }
 

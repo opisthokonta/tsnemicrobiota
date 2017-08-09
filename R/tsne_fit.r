@@ -13,6 +13,12 @@ check_ctrl <- function(control_list){
 	stopifnot(c('momentum_values', 'momentum_iter') %in% names(control_list))
 	stopifnot(max(control_list$momentum_iter) >= control_list$max_iter)
 	stopifnot(min(control_list$momentum_iter) > 1)
+
+	stopifnot(is.numeric(control_list$early_exageration_iter))
+	stopifnot(length(control_list$early_exageration_iter) == 1)
+	stopifnot(length(control_list$early_exageration_factor) == 1)
+	stopifnot(control_list$early_exageration_factor >= 1)
+
 }
 
 
@@ -46,7 +52,8 @@ check_ctrl <- function(control_list){
 #' \code{step_size}: \tab The gradient descent step size. Default is 100, but it can sometimes be usefull to set this to a lower value.\cr
 #' \code{momentum_values}: \tab A vector of values that determines the momentum. The default is c(0.5, 0.8), following the original t-SNE paper.\cr
 #' \code{momentum_iter}: \tab A vector of values that determines the iterations the momentum_values should be used. Default is c(250, 1000), following the original t-SNE paper. \cr
-#' \code{early_exageration}: \tab Logical. Should the 'early exageration' trick be used? Default is TRUE, following the original t-SNE paper.\cr
+#' \code{early_exageration_iter}: \tab Numerical. The number of iterations the early exageration trick should be used. Default 50.
+#' \code{early_exageration_factor}: \tab Numerical. The exageration factor used in the early exacegration phase. Default is 4.
 #' }
 #'
 #'
@@ -101,7 +108,8 @@ tsne_dist <- function(dist_, dimensions=2, verbose=0, rng_seed=NULL, control=lis
 													step_size=100,
 													momentum_values = c(0.5, 0.8),
 													momentum_iter = c(250, 1000),
-													early_exageration=TRUE)
+													early_exageration_iter=50,
+													early_exageration_factor=4)
 	control <- utils::modifyList(default_control, control)
 	check_ctrl(control)
 
@@ -112,11 +120,12 @@ tsne_dist <- function(dist_, dimensions=2, verbose=0, rng_seed=NULL, control=lis
 	}
 
 	nobs <- ncol(pp_mat)
+	do_early_exag <- control$early_exageration_iter > 0
 
-	if (control$early_exageration){
-		early_exag_factor <- 4
-		early_exag_iter <- 50
-	}
+	# if (control$early_exageration){
+	# 	early_exag_factor <- 4
+	# 	early_exag_iter <- 50
+	# }
 
 	if (verbose > 0){
 		cat(sprintf('Momentum: %.2f (iter <= %d)\n', control$momentum_values, control$momentum_iter))
@@ -153,10 +162,10 @@ tsne_dist <- function(dist_, dimensions=2, verbose=0, rng_seed=NULL, control=lis
 		}
 
 		# Early exaggeration
-		if (control$early_exageration){
-			if (kk <= early_exag_iter){
-				pp_mat <- pp_mat_raw * early_exag_factor
-			} else if (kk == early_exag_iter+1){
+		if (do_early_exag){
+			if (kk <= control$early_exageration_iter){
+				pp_mat <- pp_mat_raw * control$early_exageration_factor
+			} else if (kk == control$early_exageration_iter+1){
 				pp_mat <- pp_mat_raw
 			}
 		} else {

@@ -20,7 +20,7 @@
 #' @param precomputed_distance Matrix or dist object of a precomputed dissimilarity matrix. If you use other ordination techniques or trying different perplexities it will be faster to compute the dissimilarities beforehand.
 #' @param pseudocounts The number of psuedocounts, which is added to all elements in the otu table. Only applied when distance is philr.
 #' @param verbose The amount of output during the t-SNE estimation. Can be 0 (no output), 1 (some output, including a progress bar) and 2 (detailed output, mostly usefull for debugging purposes)
-#' @param rng_seed Provide a seed for generating intiial values for the coordiantes. The final t-SNE result is highly sensitive for starting values, so to get reproducible results you should provide a seed.
+#' @param rng_seed Provide a seed for generating intial values for the coordiantes. The final t-SNE result is highly sensitive for starting values, so to get reproducible results you should provide a seed.
 #' @param philr_options A list of options to use with philr distances. See 'Details'.
 #' @param control A list of control parameters. See the 'Details' section for \code{\link{tsne}}.
 #'

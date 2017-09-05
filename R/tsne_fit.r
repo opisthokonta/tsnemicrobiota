@@ -27,7 +27,7 @@ check_ctrl <- function(control_list){
 #'
 #' t-Distributed Stochastic Neighbor Embedding (t-SNE).
 #'
-#' tsne_from_dist assumes that dist_ is a distance matrix interpretable as a
+#' \code{tsne_dist} assumes that dist_ is a distance matrix interpretable as a
 #' nearest neighbor distribution. If you only have a distance matrix, you can use
 #' the \code{\link{dist_to_sne}} function to create a SNE dissimilarity matrix.
 #'
@@ -64,8 +64,7 @@ check_ctrl <- function(control_list){
 #'\tabular{ll}{
 #' \code{par}: \tab A matrix with the t-SNE embedding. \cr
 #' \code{trace}: \tab A vector of the Kullback-Leibler divergences.
-#' If you used early exaggeration (default) you will see a large jump in the
-#' values at iteration 50. \cr
+#' If you used early exaggeration (default) you will see a large jump where the exageration ends. \cr
 #'}
 #'
 #' @seealso
